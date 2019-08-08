@@ -1,3 +1,4 @@
+import re
 def addition(a,b):
     sum = 0
     if a == '' or b == '':
@@ -12,8 +13,6 @@ def addition(a,b):
     sum = int(a)+int(b)
     return sum
 
-print(addition('',''))
-
 def addition2(*args):
     sum = 0
     for number in args:
@@ -22,4 +21,15 @@ def addition2(*args):
         sum += int(number)
     return sum
 
-
+def addition_proper(a):
+    arr = a.split(',')
+    print(arr)
+    sum = 0
+    for number in arr:
+        if number == '':
+            number = 0
+        if str.contains('n') in number:
+            print('True')
+        #sum += int(number)
+    return sum
+print(addition_proper('10\n5,5'))
