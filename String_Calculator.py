@@ -1,4 +1,6 @@
-import re
+import regex as re
+import numpy as np
+
 def addition(a,b):
     sum = 0
     if a == '' or b == '':
@@ -22,14 +24,19 @@ def addition2(*args):
     return sum
 
 def addition_proper(a):
-    arr = a.split(',')
-    print(arr)
+    #arr = a.split(',')
+    pattern = "\d+"
+    #result = re.findall(pattern, string) 
+    arrayy = re.findall(pattern, a) 
+    print(arrayy)
     sum = 0
-    for number in arr:
+    for number in arrayy:
+        #print(type(number))
         if number == '':
             number = 0
-        if str.contains('n') in number:
-            print('True')
-        #sum += int(number)
+            #x = re.sub("\n", number)
+        sum += int(number)
+        print(sum)
     return sum
-print(addition_proper('10\n5,5'))
+
+

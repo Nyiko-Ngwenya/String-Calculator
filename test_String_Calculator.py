@@ -21,7 +21,9 @@ def test_addition_proper():
     assert addition_proper('10,2,5,5') == 22
     assert addition_proper('5,2') == 7
     assert addition_proper('') == 0
-    assert addition2('1\n2,3') == 6
-    assert addition2('10\n5,5') == 20
+    assert addition_proper('1\n2,3') == 6
+    assert addition_proper('10\n5,5') == 20
+    assert addition_proper('//;\n1;2') == 3
+    assert addition_proper('//;\n1;-2') == -1
 
             
