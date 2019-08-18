@@ -25,3 +25,21 @@ def test_add_multiple_numbers():
 def test_add_with_new_line():
     result = 6
     assert Add('1\n2,3') == result
+
+def test_add_diff_delimiters():
+    result = 3
+    assert Add('//;\n1;2') == result
+    result = 20
+    assert Add('//;\n18;2') == result
+
+def test_add_negative():
+    result = 3
+    assert Add('//;\n1;2') == result
+    result = 20
+    assert Add('//;\n18;2') == result
+
+def test_except_diff_delimiters():
+    result = 3
+    assert Add('//;\n1;2') == result
+    result = 20
+    assert Add('//;\n18;2') == result
