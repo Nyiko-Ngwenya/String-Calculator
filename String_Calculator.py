@@ -1,5 +1,4 @@
 import re
-import numpy as np
 
 def Add(strings):
     if strings == '':
