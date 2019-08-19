@@ -35,15 +35,30 @@ def test_add_diff_delimiter2():
 
 def test_add_negative():
      with pytest.raises(Exception):
-        result = Exception(f'this -1 is a negative')
+        result = Exception('this [-1] is a negative ,negatives not allowed')
         assert Add('-1') == result
 
 def test_multiple_negatives():
     with pytest.raises(Exception):
-        result = Exception(f'this -1 is a negative')
+        result = Exception('these  [-1,-3] are negative')
         assert Add('-1,2,-3') == result
-        result = Exception(f'this -1 is a negative')
+        result = Exception('these  [-1,-18] are negative')
         assert Add('-1,//;\n-18;2') == result
-        result = Exception(f'this -1 is a negative')
-        assert Add('-1') == result
+        result = Exception('these [-1,-2,-3,-4] are negative')
+        assert Add('-1,-2,-3,-4') == result
 
+def test_adding_big_numbers():
+    result = 2
+    assert Add('1000,2') == 2
+
+def test_long_delimiters():
+    result = 6
+    assert Add('//[***]\n1***2***3') == result
+
+def test_multiple_delimiters():
+    result = 6
+    assert Add('//[*][%]\n1*2%3') == result
+
+def test_letters_fail():
+    result = 0
+    assert Add('abc') == result
