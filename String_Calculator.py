@@ -21,4 +21,3 @@ def Add(strings):
     else:
         return 0
 
-print(Add('-1,2,3'))
