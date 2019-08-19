@@ -1,4 +1,5 @@
 from String_Calculator import Add
+import pytest
 
 def test_adding_empty_string():
     result = 0
@@ -26,20 +27,23 @@ def test_add_with_new_line():
     result = 6
     assert Add('1\n2,3') == result
 
-def test_add_diff_delimiters():
+def test_add_diff_delimiter2():
     result = 3
     assert Add('//;\n1;2') == result
     result = 20
     assert Add('//;\n18;2') == result
 
 def test_add_negative():
-    result = 3
-    assert Add('//;\n1;2') == result
-    result = 20
-    assert Add('//;\n18;2') == result
+     with pytest.raises(Exception):
+        result = Exception(f'this -1 is a negative')
+        assert Add('-1') == result
 
-def test_except_diff_delimiters():
-    result = 3
-    assert Add('//;\n1;2') == result
-    result = 20
-    assert Add('//;\n18;2') == result
+def test_multiple_negatives():
+    with pytest.raises(Exception):
+        result = Exception(f'this -1 is a negative')
+        assert Add('-1,2,-3') == result
+        result = Exception(f'this -1 is a negative')
+        assert Add('-1,//;\n-18;2') == result
+        result = Exception(f'this -1 is a negative')
+        assert Add('-1') == result
+

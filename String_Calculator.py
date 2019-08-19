@@ -3,36 +3,22 @@ import numpy as np
 
 def Add(strings):
     count = 0
+    pattern = r'-?\d+'
+    arrayy = re.findall(pattern, strings)
+    arrayNeg = []
     if strings == '':
         return 0
-    elif ',' in strings:
-        pattern = r'\d+'
-        arrayy = re.findall(pattern, strings) 
+    if arrayy:
         for number in arrayy:
-            #print(number)
-            count += int(number)
-        #return arrayy
-        return count
-    elif ';' in strings:
-        pattern = r'\d+'
-        arrayy = re.findall(pattern, strings) 
-        for number in arrayy:
-            #print(number)
-            count += int(number)
-        #return arrayy
-        return count
-    elif '-' in strings:
-        pattern = r'-?\d+'
-        arrayy = re.findall(pattern, strings) 
-        for number in arrayy:
-            #print(number)
-            count += int(number)
-        #return arrayy
-        return count
+            if int(number) < 0:
+                raise Exception(f'this {number} is a negative')
+            else:    
+                count += int(number)
+        return count    
     else:
-        return int(strings)
+        return 0
 
-print(Add('//;\n18;2') )
+#print(Add('//;\n18;2') )
 # pattern = '-?\d'
 # stringz = '1,2'
 # stringz = '-1,2'
@@ -53,3 +39,17 @@ print(Add('//;\n18;2') )
 # print(sum)
 
 # print(match)
+
+def Add_version_2(strings):
+    count = 0
+    pattern = r'-?\d+'
+    arrayy = re.findall(pattern, strings)
+    if strings == '':
+        return 0
+    if arrayy:
+        for number in arrayy:
+            count += int(number)
+        return count    
+    else:
+        return 0   
+
