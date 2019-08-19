@@ -7,18 +7,12 @@ def Add(strings):
     count = 0
     pattern = r'-?\d+'
     arrayy = re.findall(pattern, strings)
-
-    arrayNeg = []
-    #REMEMBER LIST COMPREHENSIONS
-    for i in arrayy:
-        if int(i) <= 0:
-            arrayNeg.append(i) 
+    arrayNeg = [negative for negative in arrayy if '-' in negative]
     if arrayNeg:
         if len(arrayNeg) > 1:
             raise Exception(f'these are {arrayNeg} negative')
         else:
             raise Exception(f'this {arrayNeg} is a negative ,negatives not allowed')
-
     if arrayy:
         for number in arrayy:
             if int(number) < 1000:
@@ -27,3 +21,4 @@ def Add(strings):
     else:
         return 0
 
+print(Add('-1,2,3'))
